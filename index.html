@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anna Rozdorozhnia — Tech Recruiter &amp; Executive Search</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0A0A0A;
+    --off-white:#F7F6F3;
+    --ink:#141412;
+    --gray:#8C8C86;
+    --hairline:#D8D6D0;
+    --hairline-dark:#2C2C29;
+    --display: 'Archivo', sans-serif;
+    --body: 'Fraunces', serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  section[id] {
+  scroll-margin-top: 64px;
+}
+
+  body{
+    background:var(--off-white);
+    color:var(--ink);
+    font-family:var(--body);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--ink);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- TOPBAR ---------- */
+  .topbar{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background: #000000;
+    color:var(--off-white);
+    border-bottom:1px solid var(--hairline-dark);
+  }
+  .topbar .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:64px;
+  }
+  .mark{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:18px;
+    letter-spacing:0.02em;
+  }
+  .top-links{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.06em;
+  }
+  .top-links a{
+    text-decoration:none;
+    color:var(--gray);
+    transition:color .2s ease;
+  }
+  .top-links a:hover{color:var(--off-white);}
+  .btn-call{
+    border:1px solid var(--off-white) !important;
+    color:var(--off-white) !important;
+    padding:8px 14px;
+    text-transform:uppercase;
+  }
+  .btn-call:hover{
+    background:var(--off-white);
+    color:var(--black) !important;
+  }
+  @media (max-width:640px){
+    .top-links span.sep{display:none;}
+    .top-links a:not(.btn-call){display:none;}
+  }
+
+  .scroll-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--off-white);
+    width: 0%; 
+    transition: width 0.1s ease-out;
+    z-index: 51;
+  }
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--black);
+    color:var(--off-white);
+    padding:96px 0 132px;
+    position:relative;
+    overflow:hidden;
+    min-height: calc(100vh - 64px);
+  }
+  .hero .wrap{
+    position:relative;
+    z-index:2;
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gray);
+    margin-bottom:24px;
+  }
+  .hero h1{
+    font-family:var(--display);
+    font-weight:900;
+    font-size: clamp(32px, 8.5vw, 108px);
+    line-height:0.94;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+  }
+  .hero .sub{
+    margin-top:28px;
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(16px, 2.2vw, 22px);
+    letter-spacing:0.01em;
+    color:var(--off-white);
+    max-width:840px;
+  }
+  .hero .meta-row{
+    margin-top:36px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 28px;
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--gray);
+    
+  }
+  .hero .meta-row strong{color:var(--off-white); font-weight:400;}
+  .hero-reveal{
+    opacity:0;
+    transform:translateY(30px);
+    animation: heroFadeUp 0.7s ease forwards;
+    }
+    .hero-reveal.hr1{animation-delay:.1s;}
+    .hero-reveal.hr2{animation-delay:.3s;}
+    .hero-reveal.hr3{animation-delay:.5s;}
+    .hero-reveal.hr4{animation-delay:.7s;}
+  @keyframes heroFadeUp{
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{
+    padding:88px 0;
+    border-bottom:1px solid var(--hairline);
+  }
+  .section.on-black{
+    background:var(--black);
+    color:var(--off-white);
+    border-bottom:1px solid var(--hairline-dark);
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:24px;
+    margin-bottom:48px;
+    flex-wrap:wrap;
+  }
+  .section-title{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:clamp(28px, 4vw, 44px);
+    text-transform:uppercase;
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .file{
+    padding:36px 0;
+    border-top:1px solid var(--hairline);
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:32px;
+  }
+
+  @media (max-width:760px){
+    .file{grid-template-columns:1fr; gap:14px;}
+  }
+  .file-meta{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--gray);
+    letter-spacing:0.04em;
+  }
+  .file-meta .file-num{
+    display:block;
+    color:var(--ink);
+    font-size:12px;
+    letter-spacing:0.1em;
+    margin-bottom:8px;
+    text-transform:uppercase;
+  }
+  .file-meta .loc{
+    display:block;
+    margin-top:6px;
+  }
+  .file-body h3{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:clamp(22px, 2.6vw, 30px);
+    text-transform:uppercase;
+    letter-spacing:-0.005em;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .file-body h3 a{
+    text-decoration:none;
+    border-bottom:2px solid var(--ink);
+    transition:opacity .2s ease;
+  }
+  .file-body h3 a:hover{opacity:0.55;}
+  .file-body h3 .arrow{
+    font-size:16px;
+    font-family:var(--mono);
+    font-weight:400;
+  }
+  .file-company-desc{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--gray);
+    margin-top:6px;
+    letter-spacing:0.02em;
+  }
+  .file-role{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-top:20px;
+    margin-bottom:8px;
+  }
+  .file-desc{
+    font-family:var(--body);
+    font-size:16.5px;
+    line-height:1.6;
+    max-width:640px;
+  }
+
+  /* ---------- EDUCATION  ---------- */
+  .edu-file{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:32px;
+  }
+  @media (max-width:760px){
+    .edu-file{grid-template-columns:1fr; gap:14px;}
+  }
+  .edu-file .file-meta{color:#9c9c96;}
+  .edu-file .file-meta .file-num{color:var(--off-white);}
+  .edu-file h3{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:clamp(20px, 2.6vw, 28px);
+    text-transform:uppercase;
+    line-height:1.15;
+  }
+  .edu-file .degree{
+    font-family:var(--body);
+    font-size:17px;
+    margin-top:10px;
+    color:#d8d6d0;
+  }
+
+  /* ---------- LANGUAGES ---------- */
+  .lang-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--hairline);
+    border:1px solid var(--hairline);
+  }
+  @media (max-width:700px){
+    .lang-grid{grid-template-columns:repeat(2,1fr);}
+  }
+
+  @media (max-width:480px){
+    .lang-grid{grid-template-columns:1fr;}
+  }
+  .lang-cell{
+    background:var(--off-white);
+    padding:24px;
+  }
+  .lang-name{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:22px;
+    text-transform:uppercase;
+  }
+  .lang-level{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--gray);
+    letter-spacing:0.06em;
+    margin-top:4px;
+    text-transform:uppercase;
+  }
+  .lang-bar{
+    margin-top:14px;
+    height:4px;
+    background:var(--hairline);
+    position:relative;
+  }
+  .lang-bar span{
+    position:absolute;
+    left:0; top:0; bottom:0;
+    background:var(--ink);
+  }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact-section{
+    background:var(--black);
+    color:var(--off-white);
+    padding:96px 0 26px;
+    min-height: calc(100vh - 64px);
+  }
+  .contact-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:32px;
+    flex-wrap:wrap;
+    margin-bottom:56px;
+  }
+  .contact-title{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:clamp(36px, 6vw, 64px);
+    text-transform:uppercase;
+    line-height:1;
+  }
+  .btn-big{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--black);
+    background:var(--off-white);
+    padding:16px 28px;
+    transition:transform .2s ease, background .2s ease;
+    white-space:nowrap;
+  }
+  .btn-big:hover{
+    background:#d8d6d0;
+    transform:translateY(-2px);
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:32px 48px;
+    border-top:1px solid var(--hairline-dark);
+    padding-top:40px;
+  }
+  @media (max-width:700px){
+    .contact-grid{grid-template-columns:1fr;}
+  }
+  .contact-item .label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gray);
+    margin-bottom:8px;
+  }
+  .contact-item a{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:18px;
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .contact-item a:hover{border-bottom-color:var(--off-white);}
+  .footer-bottom{
+    margin-top:64px;
+    padding-top:24px;
+    border-top:1px solid var(--hairline-dark);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.06em;
+    color:var(--gray);
+    text-transform:uppercase;
+  }
+
+  /* reveal on scroll */
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a href="#" class="mark" style="text-decoration: none;">A.R.</a>
+      <nav class="top-links">
+        <a href="#experience">Experience</a>
+        <span class="sep">·</span>
+        <a href="#contact">Contact</a>
+        <a class="btn-call" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0IoaxUphvW0OE-zM6tHJ4RwksXIscH5l-6TBQ0IuceH0dBMOjreLraByRCPmPEPJnXmgzzrY1R" target="_blank" rel="noopener">Book a call</a>
+      </nav>
+    </div>
+    <div class="scroll-progress"></div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow hero-reveal hr1">Tech Recruiter · Zagreb, Croatia</div>
+      <h1 class="hero-reveal hr2">Anna<br>Rozdorozhnia</h1>
+      <p class="sub hero-reveal hr3">Tech Recruiter with 10 years of full-cycle global recruitment and executive search experience. </p>
+      <p class="sub hero-reveal hr3">Recruiting candidates in Software Engineering, Cloud/DevOps, Data/AI, and Leadership roles across Europe, the Americas, and APAC.</p>
+      <div class="meta-row hero-reveal hr4">
+        <span>10 years in global tech recruitment &amp; executive search</span>
+        <span>Based in Croatia — available remotely, worldwide</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE / FILES -->
+  <section class="section" id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-title">Experience</div>
+        </div>
+      </div>
+
+      <div class="file reveal">
+        <div class="file-meta">
+          <span class="file-num">Nov 2020 → Present</span>
+          <span class="loc">Remote, New York, USA</span>
+        </div>
+        <div class="file-body">
+          <h3><a href="https://www.boylesoftware.com" target="_blank" rel="noopener">Boyle Software</a> <span class="arrow">↗</span></h3>
+          <div class="file-company-desc">Technology consulting company</div>
+          <div class="file-role">Tech Recruiter</div>
+          <div class="file-desc">Global full-cycle recruitment for people in Software Engineering, Architecture &amp; Leadership, Design, QA, Infrastructure, DevOps &amp; Cloud, Data &amp; AI, and IT Support &amp; Helpdesk.</div>
+        </div>
+      </div>
+
+      <div class="file reveal">
+        <div class="file-meta">
+          <span class="file-num">Dec 2019 → Nov 2020</span>
+          <span class="loc">Onsite &amp; remote, Kyiv, Ukraine</span>
+        </div>
+        <div class="file-body">
+          <h3><a href="https://www.bluefield.tech" target="_blank" rel="noopener">Bluefield Technologies</a> <span class="arrow">↗</span></h3>
+          <div class="file-company-desc">Consulting company specializing in networking &amp; cloud technologies</div>
+          <div class="file-role">Tech Recruiter</div>
+          <div class="file-desc">
+            Led all recruitment efforts for a newly opened company.
+            Recruitment of Java and Golang Software Engineers.
+          </div>
+        </div>
+      </div>
+
+      <div class="file reveal">
+        <div class="file-meta">
+          <span class="file-num">Jul 2018 → Aug 2019</span>
+          <span class="loc">Onsite, Warsaw, Poland</span>
+        </div>
+        <div class="file-body">
+          <h3><a href="https://www.tb4hr.com" target="_blank" rel="noopener">TB4HR</a> <span class="arrow">↗</span></h3>
+          <div class="file-company-desc">Recruitment process outsourcing (RPO) company in the technology industry</div>
+          <div class="file-role">Tech Recruiter</div>
+          <div class="file-desc">Full-cycle recruitment across both standard tech (Software, Systems, Data) and deep-tech like satellite electronics design, satellite operations, robotics and simulation engineering for startups and enterprises.</div>
+        </div>
+      </div>
+
+      <div class="file reveal">
+        <div class="file-meta">
+          <span class="file-num">Nov 2016 → Jun 2018</span>
+          <span class="loc">Onsite, Kyiv, Ukraine</span>
+        </div>
+        <div class="file-body">
+          <h3><a href="https://www.boyden.com" target="_blank" rel="noopener">Boyden Executive Search</a> <span class="arrow">↗</span></h3>
+          <div class="file-company-desc">Top-5 global retained executive search firm</div>
+          <div class="file-role">Sourcer</div>
+          <div class="file-desc">
+            Sourcing C-level professionals to domestic and global companies in Ukraine.
+            Searches in Consumer Goods, Logistics, Hospitality, Manufacturing industries for GM/CEO, CMO, Head of Sales, and HR Director roles.
+          </div>
+        </div>
+      </div>
+
+      <div class="file reveal">
+        <div class="file-meta">
+          <span class="file-num">Apr 2016 → Nov 2016</span>
+          <span class="loc">Onsite, Kyiv, Ukraine</span>
+        </div>
+        <div class="file-body">
+          <h3><a href="https://www.pedersenandpartners.com" target="_blank" rel="noopener">Pedersen &amp; Partners</a> <span class="arrow">↗</span></h3>
+          <div class="file-company-desc">Leading global retained executive search firm</div>
+          <div class="file-role">Sourcer</div>
+          <div class="file-desc">Entry-level position in executive search, developing core sourcing skills for C-level roles.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section on-black" id="education">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-title">Education</div>
+        </div>
+      </div>
+      <div class="edu-file reveal">
+        <div class="file-meta">
+          <span class="file-num">2011 → 2016</span>
+        </div>
+        <div>
+          <h3>National Technical University of Ukraine<br>"Kyiv Polytechnic Institute"</h3>
+          <div class="degree">Master's Degree in Translation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section class="section" id="languages">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-title">Languages</div>
+        </div>
+      </div>
+      <div class="lang-grid reveal">
+        <div class="lang-cell">
+          <div class="lang-name">English</div>
+          <div class="lang-level">C1</div>
+          <div class="lang-bar"><span style="width:83%;"></span></div>
+        </div>
+        <div class="lang-cell">
+          <div class="lang-name">German</div>
+          <div class="lang-level">B1</div>
+          <div class="lang-bar"><span style="width:50%;"></span></div>
+        </div>
+        <div class="lang-cell">
+          <div class="lang-name">Polish</div>
+          <div class="lang-level">B1</div>
+          <div class="lang-bar"><span style="width:50%;"></span></div>
+        </div>
+        <div class="lang-cell">
+          <div class="lang-name">Croatian</div>
+          <div class="lang-level">A1</div>
+          <div class="lang-bar"><span style="width:17%;"></span></div>
+        </div>
+        <div class="lang-cell">
+          <div class="lang-name">Ukrainian</div>
+          <div class="lang-level">Native</div>
+          <div class="lang-bar"><span style="width:100%;"></span></div>
+        </div>
+        <div class="lang-cell">
+          <div class="lang-name">Russian</div>
+          <div class="lang-level">Native</div>
+          <div class="lang-bar"><span style="width:100%;"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <footer class="contact-section" id="contact">
+    <div class="wrap">
+      <div class="contact-top reveal">
+        <div class="contact-title">Get in<br>touch</div>
+        <a class="btn-big" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0IoaxUphvW0OE-zM6tHJ4RwksXIscH5l-6TBQ0IuceH0dBMOjreLraByRCPmPEPJnXmgzzrY1R" target="_blank" rel="noopener">Book a call</a>
+      </div>
+      <div class="contact-grid reveal">
+        <div class="contact-item">
+          <div class="label">Email</div>
+          <a href="mailto:anna.rozdorozhnia@gmail.com">anna.rozdorozhnia@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <div class="label">Phone (UA)</div>
+          <a href="tel:+380964416785">+380 96 441 6785</a>
+        </div>
+        <div class="contact-item">
+          <div class="label">Phone (HR)</div>
+          <a href="tel:+385981975091">+385 98 197 5091</a>
+        </div>
+        <div class="contact-item">
+          <div class="label">LinkedIn</div>
+          <a href="https://www.linkedin.com/in/annarozdorozhnia/" target="_blank" rel="noopener">/in/annarozdorozhnia ↗</a>
+        </div>
+        <div class="contact-item">
+          <div class="label">CV Site</div>
+          <a href="https://rzdrzhn.github.io/CV/" target="_blank" rel="noopener">rzdrzhn.github.io/CV ↗</a>
+        </div>
+        <div class="contact-item">
+          <div class="label">CV File</div>
+          <a href="Anna_Rozdorozhnia_CV.pdf" download="Anna_Rozdorozhnia_CV.pdf">Download PDF ↗</a>
+        </div>
+      </div>
+      <div class="footer-bottom reveal">
+        <span>Anna Rozdorozhnia — Tech Recruiter</span>
+        <span>Available remotely, worldwide</span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+const progressBar = document.querySelector('.scroll-progress');
+  
+  window.addEventListener('scroll', () => {
+    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+   
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+   
+    const scrolled = (winScroll / height) * 100;
+  
+    progressBar.style.width = scrolled + '%';
+  });
+  </script>
+</body>
+</html>
